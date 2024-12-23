@@ -1,0 +1,8 @@
+{
+ "Portname": "/dev/ttyACM0",
+ "Speed": "115200",
+ "IP": "192.178.4.1",
+ "Mode": "Serial",
+ "Repeat": 3,
+ "StartAtLine": 0
+}
