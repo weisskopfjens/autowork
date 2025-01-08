@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"jensweisskopf/autowork/connection"
 	"jensweisskopf/autowork/hid"
@@ -191,13 +192,14 @@ func main() {
 	catch2.SetPlaceHolder("Keyboard")
 	catch2.MultiLine = true
 	catch2.OnTypedKey(HandleKeyInputKeyboard)
+	//catch2.OnTypedRune()
 
 	catchareas := container.NewGridWithColumns(2, catch1, catch2)
 
 	commentEntry := widget.NewEntry()
 	commentEntry.PlaceHolder = "Comment"
 	commentButton := widget.NewButton("Insert comment", func() {
-		recordingEntry.Append("// " + commentEntry.Text)
+		recordingEntry.Append(fmt.Sprintf("// %s\n", commentEntry.Text))
 	})
 
 	commentGrid := container.NewGridWithColumns(2, commentButton, commentEntry)

@@ -1,8 +1,12 @@
-SetDelayPressMouse(1000)
-SetDelayPressKey(1000)
+// Hurrican fullscreen > Suchen Auftrag > Auftragsdaten
+// Excel Tabelle mit taifun nummer (Spalte 4) und bemerkung (Spalte1) für hurrican
+// Füllt Spalte 2 mit ok
+
+SetDelayPressMouse(500)
+SetDelayPressKey(500)
 SetDelayMoveMouse(100)
 SetDelayResetMouse(1000)
-SetDelayTransition(3000)
+SetDelayTransition(1500)
 
 Delay(6665)
 ResetMouse()
@@ -72,9 +76,11 @@ MoveMouse(-5, 0, 0, 0)
 Delay(216)
 MoveMouse(-5, 0, 0, 0)
 Delay(2584)
+SetDelayPressMouse(100)
 ClickMouse(1)
 Delay(765)
 ClickMouse(1)
+SetDelayPressMouse(1000)
 PressMod(1)
 Delay(7799)
 HitKey(25) // v
@@ -123,11 +129,16 @@ MoveMouse(10, 0, 0, 0)
 Delay(200)
 MoveMouse(10, 0, 0, 0)
 
-
-Delay(69350)
+SetDelayPressMouse(100)
+Delay(100)
 ClickMouse(1)
-Delay(149)
+Delay(100)
 ClickMouse(1)
+Delay(100)
+ClickMouse(1)
+Delay(100)
+ClickMouse(1)
+SetDelayPressMouse(1000)
 Delay(2682)
 ResetMouse()
 Delay(3166)

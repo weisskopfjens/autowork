@@ -121,13 +121,12 @@ func HandleStopRecording() {
 }
 
 func HandleNewRecording() {
-	defaulttext := `
-	SetDelayPressMouse(1000)
-	SetDelayPressKey(1000)
-	SetDelayMoveMouse(100)
-	SetDelayResetMouse(1000)
-	SetDelayTransition(3000)
-	`
+	defaulttext := `SetDelayPressMouse(1000)
+SetDelayPressKey(1000)
+SetDelayMoveMouse(100)
+SetDelayResetMouse(1000)
+SetDelayTransition(3000)
+`
 	recordingEntry.SetText(defaulttext)
 }
 

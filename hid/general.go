@@ -189,6 +189,7 @@ func (h *HID) HitKey(k int) error {
 		return err
 	}
 	cmd = fmt.Sprintf("rer %d", k)
+	//cmd = fmt.Sprint("rel")
 	if err := h.writeToCommunicator(cmd); err != nil {
 		return err
 	}
