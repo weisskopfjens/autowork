@@ -1,8 +1,8 @@
 package main
 
 import (
-	"autowork/hid"
 	"fmt"
+	"jensweisskopf/autowork/hid"
 	"strconv"
 
 	log "github.com/sirupsen/logrus"
@@ -121,7 +121,14 @@ func HandleStopRecording() {
 }
 
 func HandleNewRecording() {
-	recordingEntry.SetText("")
+	defaulttext := `
+	SetDelayPressMouse(1000)
+	SetDelayPressKey(1000)
+	SetDelayMoveMouse(100)
+	SetDelayResetMouse(1000)
+	SetDelayTransition(3000)
+	`
+	recordingEntry.SetText(defaulttext)
 }
 
 func HandleSpecialKey1() {

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"autowork/connection"
-	"autowork/hid"
 	"io"
+	"jensweisskopf/autowork/connection"
+	"jensweisskopf/autowork/hid"
 	"path/filepath"
 	"strconv"
 

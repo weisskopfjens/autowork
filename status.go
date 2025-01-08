@@ -1,9 +1,9 @@
 package main
 
 import (
-	"autowork/connection"
-	"autowork/hid"
 	"fmt"
+	"jensweisskopf/autowork/connection"
+	"jensweisskopf/autowork/hid"
 	"time"
 
 	"fyne.io/fyne/v2/widget"

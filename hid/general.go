@@ -1,9 +1,9 @@
 package hid
 
 import (
-	"autowork/connection"
 	"errors"
 	"fmt"
+	"jensweisskopf/autowork/connection"
 	"strings"
 	"time"
 
@@ -67,9 +67,16 @@ func NewHID() *HID {
 	hid.scriptEnv.Define("MoveMouse", hid.MoveMouse)
 	hid.scriptEnv.Define("ClickMouse", hid.ClickMouse)
 	hid.scriptEnv.Define("HitKey", hid.HitKey)
+	hid.scriptEnv.Define("PressMod", hid.PressMod)
+	hid.scriptEnv.Define("PressKey", hid.PressKey)
 	hid.scriptEnv.Define("ReleaseKey", hid.ReleaseKey)
 	hid.scriptEnv.Define("ReleaseKeys", hid.ReleaseKeys)
 	hid.scriptEnv.Define("Delay", hid.Delay)
+	hid.scriptEnv.Define("SetDelayPressMouse", hid.SetDelayPressMouse)
+	hid.scriptEnv.Define("SetDelayPressKey", hid.SetDelayPressKey)
+	hid.scriptEnv.Define("SetDelayMoveMouse", hid.SetDelayMoveMouse)
+	hid.scriptEnv.Define("SetDelayResetMouse", hid.SetDelayResetMouse)
+	hid.scriptEnv.Define("SetDelayTransition", hid.SetDelayTransition)
 
 	hid.lastCommand = 0
 	hid.forcedDelay = 0
