@@ -116,7 +116,7 @@ func (e *IntEntry) TypedShortcut(shortcut fyne.Shortcut) {
 	}
 
 	content := paste.Clipboard.Content()
-	if _, err := strconv.ParseUint(content, 10, 64); err == nil {
+	if _, err := strconv.ParseInt(content, 10, 64); err == nil {
 		e.Entry.TypedShortcut(shortcut)
 	}
 }
@@ -175,5 +175,49 @@ func (e *CatchEntry) TypedShortcut(shortcut fyne.Shortcut) {
 }
 
 func (e *CatchEntry) Keyboard() mobile.KeyboardType {
+	return mobile.NumberKeyboard
+}
+
+// TimeEntry
+type TimeEntry struct {
+	widget.Entry
+}
+
+func NewTimeEntry() *TimeEntry {
+	entry := &TimeEntry{}
+	entry.ExtendBaseWidget(entry)
+	return entry
+}
+
+func (e *TimeEntry) TypedRune(r rune) {
+	if r >= '0' && r <= '9' {
+		if len(e.Entry.Text) == 2 {
+			e.Entry.TypedRune(':')
+		}
+		if len(e.Entry.Text) == 5 {
+			e.Entry.TypedRune(':')
+		}
+		e.Entry.TypedRune(r)
+	}
+}
+
+/*func (e *FloatEntry) TypedKey(key *fyne.KeyEvent) {
+	fmt.Printf("FloatEntry: key %s", key.Name)
+}*/
+
+func (e *TimeEntry) TypedShortcut(shortcut fyne.Shortcut) {
+	paste, ok := shortcut.(*fyne.ShortcutPaste)
+	if !ok {
+		e.Entry.TypedShortcut(shortcut)
+		return
+	}
+
+	content := paste.Clipboard.Content()
+	if _, err := strconv.ParseFloat(content, 64); err == nil {
+		e.Entry.TypedShortcut(shortcut)
+	}
+}
+
+func (e *TimeEntry) Keyboard() mobile.KeyboardType {
 	return mobile.NumberKeyboard
 }
