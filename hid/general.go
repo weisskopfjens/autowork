@@ -32,23 +32,26 @@ deb
 */
 
 type HID struct {
-	com                connection.Communicator
-	IsRecording        bool
-	IsPlaying          bool
-	onrecordline       func(string)
-	scriptEnv          *env.Env
-	StartTimestamp     time.Time
-	LastCmdTimestamp   time.Time
-	delayClickMouse    uint
-	delayPressKey      uint
-	delayMoveMouse     uint
-	delayResetMouse    uint
-	delayTransition    uint
-	forcedDelay        uint
-	lastCommand        uint
-	CurrentLine        uint
-	CurrentIteration   uint
-	NumberOfIterations uint
+	com                  connection.Communicator
+	IsRecording          bool
+	IsPlaying            bool
+	onrecordline         func(string)
+	scriptEnv            *env.Env
+	StartTimestamp       time.Time
+	LastCmdTimestamp     time.Time
+	PlaybackStart        time.Time
+	DurationPerIteration time.Duration
+	EstimatedDuration    time.Duration
+	delayClickMouse      uint
+	delayPressKey        uint
+	delayMoveMouse       uint
+	delayResetMouse      uint
+	delayTransition      uint
+	forcedDelay          uint
+	lastCommand          uint
+	CurrentLine          uint
+	CurrentIteration     uint
+	NumberOfIterations   uint
 }
 
 func NewHID() *HID {
@@ -293,9 +296,11 @@ func (h *HID) PlaybackRecording(script string, repeat int, startAtLine int) {
 
 func (h *HID) processPlaybackRecording(script string, repeat int, startAtLine int) {
 	var err error
+	var startiteration time.Time
 	lines := strings.Split(strings.ReplaceAll(script, "\r\n", "\n"), "\n")
-
+	h.PlaybackStart = time.Now()
 	for i := 1; i < repeat+1; i++ {
+		startiteration = time.Now()
 		log.Debugf("Iteration %d from %d", i, repeat)
 		h.CurrentIteration = uint(i)
 		h.NumberOfIterations = uint(repeat)
@@ -311,6 +316,8 @@ func (h *HID) processPlaybackRecording(script string, repeat int, startAtLine in
 				break
 			}
 		}
+		h.DurationPerIteration = time.Now().Sub(startiteration)
+		h.EstimatedDuration = time.Duration(repeat-i) * h.DurationPerIteration
 	}
 	h.IsPlaying = false
 }

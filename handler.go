@@ -108,7 +108,7 @@ func HandlePlaybackRecording() {
 		log.Error("Start at line must be a number")
 		return
 	}
-	status.SetText("Recording")
+	//status.SetText("Recording")
 	hid1.PlaybackRecording(recordingEntry.Text, repeat, startat)
 }
 

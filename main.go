@@ -29,6 +29,8 @@ var com connection.Communicator
 var hid1 *hid.HID
 var status *widget.Label
 
+var StatusMsg string
+
 var mousestep int
 
 func main() {
